@@ -1,0 +1,87 @@
+<html>
+    <head>
+    <title></title>
+        <style>
+        img{
+            length:100px;
+            width:100px;
+        }
+        button{
+            
+            width:100px;
+        }
+        </style>
+        <script>
+            var wpr1=10;
+            var wpr2=10;
+            var wpr3=10;
+            var pr1=15;
+            var pr2=15;
+            var pr3=15;
+        function ProcessOrder(){
+            var q1=parseFloat(document.getElementById("qt1").value);
+            var q2=parseFloat(document.getElementById("qt2").value);
+            var q3=parseFloat(document.getElementById("qt3").value);
+            var customersub=(q1*pr1)+(q2*pr2)+(q3*pr3);
+            var companysub=(wpr1*q1)+(wpr2*q2)+(wpr3*q3);
+            var profit=customersub-companysub;
+            var items=(q1+q2+q3);
+            var tax=customersub*.0875;
+            var shipping=0;
+            if(customersub<100){
+                shipping=25;
+            }else if(customersub>=100&&customersub<=200){
+                shipping=10;
+            }else{
+                shipping=0;
+            }
+                var total=customersub+tax+shipping;
+            //display
+            var op=document.getElementById("output");
+            var build="";
+                build+="custumer subtotal:$"+customersub.toFixed(2);
+                build+="<br>";
+                build+="total tax:$"+tax.toFixed(2);
+                build+="<br>";
+                build+="Shipping Price:$"+shipping.toFixed(2);
+                build+="<br>";
+                build+="total:$"+total.toFixed(2);
+                build+="<br>";
+                build+="---------------------------------"
+                build+="<br>";
+                build+="total items:"+items;
+                build+="<br>";
+                build+="Customer subtotal:$"+customersub.toFixed(2);
+                build+="<br>";
+                build+="Company subtotal:$"+companysub.toFixed(2);
+                build+="<br>";
+                build+="Profit:$"+profit.toFixed(2);
+            op.innerHTML=build;
+            }
+            
+        </script>
+    </head>
+    <body>
+        <h1>League of legends Plushies</h1>
+        <div>
+            <img src="https://d31860yg36552c.cloudfront.net/media/catalog/product/u/n/untitled_session0932.jpg"><br>
+            <p>Poro plushie</p>
+            <span>Price $15</spam>
+            <input type="text" id="qt1" placeholder="Enter quantity">
+        </div>
+        <div>
+            <img src="https://na.merch.riotgames.com/media/catalog/product/cache/1/small_image/325x/9df78eab33525d08d6e5fb8d27136e95/r/i/riot_games-2017-06-26_2-poro_rush_15464_copy_copy.png"><br>
+            <p>Fizz plushie</p>
+            <span>Price $15</spam>
+            <input type="text" id="qt2" placeholder="Enter quantity">
+        </div>
+         <div>
+            <img src="https://na.merch.riotgames.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/r/i/riot_games-2017-06-26_2-poro_rush_15449_copy.png"><br>
+            <p>Voilbear plushie</p>
+            <span>Price $15</spam>
+            <input type="text" id="qt3" placeholder="Enter quantity">
+        </div>
+        <button onclick="ProcessOrder()">Order</button>
+        <div id="output">
+    </body>
+</html>
